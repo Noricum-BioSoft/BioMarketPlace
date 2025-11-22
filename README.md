@@ -106,27 +106,30 @@ Private per-project workspace containing:
 # 📦 Repository Structure (Conceptual Overview)
 
 ```
-marketplace/
-apps/
-web/ # User-facing portal
-api-gateway/ # Single external API surface
-orchestrator/ # Agent routing & artifact plan logic
-kb-service/ # Central knowledgebase retrieval
-project-service/ # Project memory + artifacts
-agent-runtime/ # Agent execution sandbox + agent brains
-ingestion-service/ # ETL + vendor onboarding + knowledge promotion
-audit-service/ # Immutable logs & provenance tracking
-packages/
-schemas/ # JSON schemas for artifacts/entities
-agent-sdk/ # Base agent class + helpers
-retrieval-sdk/ # Client for KB + agent brain retrieval
-artifact-sdk/ # Artifact read/write layer
-authz/ # Data boundary + trust hierarchy
-observability/ # Metrics, tracing
-infra/
-terraform/
-k8s/
-docs/
+marketplace
+├── apps                          # Deployable services & frontend
+│   ├── web                       # User-facing UI
+│   ├── api-gateway               # Single public API surface
+│   ├── orchestrator              # Agent routing, planning, artifact coordination
+│   ├── kb-service                # Central knowledgebase retrieval (graph + RAG)
+│   ├── project-service           # Project memory, artifacts, versioning, ACL
+│   ├── agent-runtime             # Agent execution sandbox + agent brains
+│   ├── ingestion-service         # ETL, vendor onboarding, KB growth & promotion
+│   └── audit-service             # Immutable logs, provenance, compliance trails
+│
+├── packages                      # Shared code libraries (importable by services)
+│   ├── schemas                   # JSON Schemas for artifacts, entities, KB objects
+│   ├── agent-sdk                 # Base Agent class, tool interfaces, agent helpers
+│   ├── retrieval-sdk             # Clients for KB + agent brain retrieval
+│   ├── artifact-sdk              # Artifact write/read helpers, version mgmt
+│   ├── authz                     # Data-boundary + trust-hierarchy policies
+│   └── observability             # Metrics, tracing, evaluation hooks
+│
+├── infra                         # Infrastructure & operations
+│   ├── terraform                 # Cloud infrastructure configuration
+│   └── k8s                       # Kubernetes manifests / Helm charts
+│
+└── docs                          # Documentation (architecture, runbooks, specs)
 ```
 
 
